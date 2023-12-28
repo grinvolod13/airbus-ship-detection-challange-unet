@@ -1,5 +1,5 @@
 
-# (added later) UNET model for Airbus Ship Detection Challenge
+# UNET model for Airbus Ship Detection Challenge
 ## Solution
 ### Dataset for training and model inputs
  * Large amount of dataset consists of images with no ships. So, were used 9000 images with ships, and 1000 without.

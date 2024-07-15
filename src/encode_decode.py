@@ -2,21 +2,20 @@ from .const import *
 import numpy as np
 
 
-# https://www.kaggle.com/code/stainsby/fast-tested-rle/notebook
-def decode(mask_rle: np.ndarray):
+# https://www.kaggle.com/code/stainsby/fast-tested-rle/notebook  [modified]
+def decode(mask_rle):
     '''
-    mask_rle: run-length as string formated (start length)
+    mask_rle: run-length as list[string] formated (start length)
     shape: (height,width) of array to return 
     Returns numpy array, 1 - mask, 0 - background
-
     '''
     img=np.zeros(SIZE_FULL*SIZE_FULL, dtype=np.float32)
-    if not(type(mask_rle) is float):
-        s = mask_rle.split()
+    for mask in mask_rle:
+        s = mask.split()
         starts, lengths = [np.asarray(x, dtype=int) for x in (s[0:][::2], s[1:][::2])]
         starts -= 1
         ends = starts + lengths
-        for lo, hi in zip(starts, ends):
+        for (lo, hi) in zip(starts, ends):
             img[lo:hi] = 1.0
     return img.reshape((SIZE_FULL, SIZE_FULL)).T
 

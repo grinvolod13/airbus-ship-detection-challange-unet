@@ -26,4 +26,4 @@ def predict(model: tfk.Model, image: np.ndarray)->np.ndarray:
     """
     images = np.array([crop3x3(image, i) for i in range(9)])
     masks = model.predict_on_batch(images)
-    return concat(masks).round()
+    return concat(masks).round() 

@@ -11,7 +11,7 @@ def dconv(prev, filters, kernel_size=3):
     prev = tfl.Conv2D(filters, kernel_size, padding="same", activation="elu", kernel_initializer= 'he_normal')(prev)
     return prev
     
-
+ 
 
 def down(prev, filters, kernel_size=3): 
     skip = dconv(prev, filters, kernel_size)

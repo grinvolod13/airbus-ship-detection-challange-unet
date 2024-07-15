@@ -12,9 +12,9 @@ def crop3x3(img: np.ndarray, i: int) -> np.ndarray:
     return img[(i//3)*SIZE: ((i//3)+1)*SIZE,(i%3)*SIZE: (i%3+1)*SIZE]
 
 
-def crop3x3_mask(img: np.ndarray):
+def crop3x3_mask(img):
     """Returns crop image, crop index with maximum ships area"""
-    i: int = K.argmax((
+    i = K.argmax((
         K.sum(crop3x3(img, 0)),
         K.sum(crop3x3(img, 1)),
         K.sum(crop3x3(img, 2)),
